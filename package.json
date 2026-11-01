@@ -1,0 +1,6 @@
+{
+  "name": "monitoraggio-torretta",
+  "private": true,
+  "description": "Cruscotto di monitoraggio e comunicazioni con DL e RUP – ex discarica C.da Torretta, Bolognetta (PA). Dati di test.",
+  "engines": { "node": ">=18" }
+}
