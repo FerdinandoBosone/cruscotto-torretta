@@ -121,6 +121,13 @@ function makeSeed(nowMs) {
       { id: "DOC-06", tipo: "Materiali", titolo: "Certificato CE geomembrana HDPE – lotto 1", stato: "accettato dalla DL", data: T(12).slice(0, 10) },
       { id: "DOC-07", tipo: "Materiali", titolo: "Dichiarazione End of Waste – aggregato riciclato, fornitura 3", stato: "in attesa di presa visione", data: T(1).slice(0, 10) },
     ],
+    video: [
+      { id: "EV-01", t: T(12, -3), cam: "TV1", tipo: "Movimento fuori orario", descr: "Animale selvatico rilevato davanti al cancello d'ingresso.", azione: "Verifica da remoto del responsabile di cantiere: falso allarme, nessun intervento.", a: ["DL"], visti: [{ ruolo: "DL", t: T(12, 1) }], chiuso: T(12, -2) },
+      { id: "EV-02", t: T(6, -4), cam: "TV2", tipo: "Intrusione", descr: "Persona non autorizzata nell'area deposito materiali; sirena e faro attivati in automatico.", azione: "Intervento della vigilanza; nessun ammanco né danno. Avviso a DL e CSE, verifica della recinzione il mattino successivo.", a: ["DL", "CSE"], visti: [{ ruolo: "DL", t: T(6, -3, 40) }, { ruolo: "CSE", t: T(6, 1) }], chiuso: T(6, 3) },
+      { id: "EV-03", t: T(3, 5), cam: "TV4", tipo: "Verifica periodica", descr: "Controllo settimanale di inquadrature, registrazione e cartelli informativi.", azione: "Esito regolare.", a: ["CSE"], visti: [{ ruolo: "CSE", t: T(3, 7) }], chiuso: T(3, 5) },
+      { id: "EV-04", t: T(1, -3), cam: "TV3", tipo: "Perdita del segnale", descr: "Telecamera non raggiungibile per 35 minuti (interruzione della rete mobile).", azione: "Ripristino automatico; registrazione locale completa sulla scheda di memoria.", a: ["DL"], visti: [], chiuso: T(1, -2) },
+      { id: "EV-05", t: T(0, -6), cam: "TV1", tipo: "Movimento fuori orario", descr: "Veicolo fermo davanti al cancello per alcuni minuti, poi ripartito.", azione: "Nessun accesso all'area; in attesa di presa visione della DL.", a: ["DL"], visti: [] },
+    ],
   };
   return { pub, riserv };
 }
