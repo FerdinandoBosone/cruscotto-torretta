@@ -83,15 +83,15 @@ function makeSeed(nowMs) {
         Z("riuso", "Acqua riusata per la bagnatura", "m³/giorno", man(1, 0, () => r1(1.5 + rnd() * 2)))] },
     ],
     conci: [
-      { id: "C1", fase: 4, data: new Date(now - 11 * D).toISOString().slice(0, 10), nota: "collaudo topografico consegnato alla DL; telo provvisorio in opera" },
+      { id: "C1", fase: 4, data: new Date(now - 11 * D).toISOString().slice(0, 10), nota: "verifica topografica consegnata alla DL; telo provvisorio in opera" },
       { id: "C2", fase: 3, data: new Date(now - 6 * D).toISOString().slice(0, 10), nota: "regolazione eseguita, telo provvisorio posato" },
       { id: "C3", fase: 2, data: new Date(now - 4 * D).toISOString().slice(0, 10), nota: "risagomatura dall'alto, guida 3D" },
       { id: "C4", fase: 1, data: new Date(now - 2 * D).toISOString().slice(0, 10), nota: "gabbionata al piede per tratti alterni" },
       { id: "C5", fase: 0, data: "", nota: "" },
       { id: "C6", fase: 0, data: "", nota: "" },
     ],
-    fasi: ["da aprire", "gabbionata al piede", "risagomatura", "regolazione e telo provvisorio", "collaudato, pronto per il capping"],
-    capping: { stato: "in attesa", nota: "Posa del pacchetto di capping in un'unica sequenza su tutta la superficie, a risagomatura completata e collaudata." },
+    fasi: ["da aprire", "gabbionata al piede", "risagomatura", "regolazione e telo provvisorio", "verificato, pronto per il capping"],
+    capping: { stato: "in attesa", nota: "Posa del pacchetto di capping in un'unica sequenza su tutta la superficie, a risagomatura completata e verificata; collaudo topografico finale a capping ultimato." },
   };
 
   const fmt = (v) => String(v).replace(".", ",");
@@ -99,7 +99,7 @@ function makeSeed(nowMs) {
   const T = (d, h, m) => new Date(now - d * D + (h || 0) * H + (m || 0) * 60e3).toISOString();
   const riserv = {
     comunicazioni: [
-      { id: "COM-001", t: T(11, 2), tipo: "Verbale", area: "A1", punto: "CP1", oggetto: "Collaudo topografico concio C1", testo: "Sezioni di controllo e rilievo GNSS del concio C1 conformi al progetto. Si chiede il nulla osta all'apertura del concio C2.", a: ["DL"], visti: [{ ruolo: "DL", t: T(11, 4) }] },
+      { id: "COM-001", t: T(11, 2), tipo: "Verbale", area: "A1", punto: "CP1", oggetto: "Verifica topografica concio C1", testo: "Sezioni di controllo e rilievo GNSS del concio C1 conformi al progetto. Si chiede il nulla osta all'apertura del concio C2.", a: ["DL"], visti: [{ ruolo: "DL", t: T(11, 4) }] },
       { id: "COM-002", t: T(8, -1), tipo: "Rapporto", area: "A3", punto: "", oggetto: "Rapporto ambientale settimanale n. 1", testo: "Vento, PM10, gas, rumore e acque nella settimana: nessun superamento delle soglie di allarme.", a: ["DL"], visti: [{ ruolo: "DL", t: T(7, 3) }] },
       { id: "COM-003", t: T(7, 1), tipo: "Documento", area: "A5", punto: "", oggetto: "Cronoprogramma aggiornato – settimana 2", testo: "Aggiornamento settimanale del cronoprogramma per il coordinamento.", a: ["CSE"], visti: [{ ruolo: "CSE", t: T(7, 5) }] },
       { id: "COM-004", t: T(5, -2, 12), tipo: "Allarme", area: "A2", punto: "POZ", oggetto: "Livello alto nel pozzo di drenaggio (2,28 m)", testo: "Pompa in blocco termico. Avviso automatico via SMS e piattaforma 18 minuti dopo l'evento. Pompa ripristinata dal tecnico alle ore successive; livello rientrato.", a: ["DL", "RUP"], visti: [{ ruolo: "DL", t: T(5, -2, 41) }, { ruolo: "RUP", t: T(5, 1) }], chiusa: T(5, 6) },
