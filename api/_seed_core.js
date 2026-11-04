@@ -83,14 +83,15 @@ function makeSeed(nowMs) {
         Z("riuso", "Acqua riusata per la bagnatura", "m³/giorno", man(1, 0, () => r1(1.5 + rnd() * 2)))] },
     ],
     conci: [
-      { id: "C1", fase: 4, data: new Date(now - 11 * D).toISOString().slice(0, 10), nota: "collaudo topografico consegnato alla DL" },
-      { id: "C2", fase: 3, data: new Date(now - 6 * D).toISOString().slice(0, 10), nota: "posa del capping in corso" },
+      { id: "C1", fase: 4, data: new Date(now - 11 * D).toISOString().slice(0, 10), nota: "collaudo topografico consegnato alla DL; telo provvisorio in opera" },
+      { id: "C2", fase: 3, data: new Date(now - 6 * D).toISOString().slice(0, 10), nota: "regolazione eseguita, telo provvisorio posato" },
       { id: "C3", fase: 2, data: new Date(now - 4 * D).toISOString().slice(0, 10), nota: "risagomatura dall'alto, guida 3D" },
       { id: "C4", fase: 1, data: new Date(now - 2 * D).toISOString().slice(0, 10), nota: "gabbionata al piede per tratti alterni" },
       { id: "C5", fase: 0, data: "", nota: "" },
       { id: "C6", fase: 0, data: "", nota: "" },
     ],
-    fasi: ["da aprire", "gabbionata al piede", "risagomatura", "capping in posa", "chiuso e collaudato"],
+    fasi: ["da aprire", "gabbionata al piede", "risagomatura", "regolazione e telo provvisorio", "collaudato, pronto per il capping"],
+    capping: { stato: "in attesa", nota: "Posa del pacchetto di capping in un'unica sequenza su tutta la superficie, a risagomatura completata e collaudata." },
   };
 
   const fmt = (v) => String(v).replace(".", ",");
@@ -120,6 +121,22 @@ function makeSeed(nowMs) {
       { id: "DOC-05", tipo: "Sicurezza", titolo: "Piano Operativo di Sicurezza", stato: "verificato dal CSE", data: T(14).slice(0, 10) },
       { id: "DOC-06", tipo: "Materiali", titolo: "Certificato CE geomembrana HDPE – lotto 1", stato: "accettato dalla DL", data: T(12).slice(0, 10) },
       { id: "DOC-07", tipo: "Materiali", titolo: "Dichiarazione End of Waste – aggregato riciclato, fornitura 3", stato: "in attesa di presa visione", data: T(1).slice(0, 10) },
+    ],
+    rotoli: [
+      { id: "R-001", sp: "1,5", lotto: "L26-118", cert: "CQ-HDPE-26-0418", arrivo: T(9).slice(0, 10), m2: 1050, stato: "accettato DL" },
+      { id: "R-002", sp: "1,5", lotto: "L26-118", cert: "CQ-HDPE-26-0419", arrivo: T(9).slice(0, 10), m2: 1050, stato: "accettato DL" },
+      { id: "R-003", sp: "1,5", lotto: "L26-121", cert: "CQ-HDPE-26-0431", arrivo: T(9).slice(0, 10), m2: 1050, stato: "accettato DL" },
+      { id: "R-004", sp: "2,0", lotto: "L26-207", cert: "CQ-HDPE-26-0502", arrivo: T(4).slice(0, 10), m2: 840, stato: "accettato DL" },
+      { id: "R-005", sp: "2,0", lotto: "L26-207", cert: "CQ-HDPE-26-0503", arrivo: T(4).slice(0, 10), m2: 840, stato: "in verifica" },
+      { id: "R-006", sp: "1,5", lotto: "L26-121", cert: "CQ-HDPE-26-0432", arrivo: T(1).slice(0, 10), m2: 1050, stato: "in verifica" },
+    ],
+    teli: [
+      { id: "T-001", rot: "R-001", concio: "C1", zona: "scarpata", stato: "da posare" },
+      { id: "T-002", rot: "R-002", concio: "C1", zona: "scarpata", stato: "da posare" },
+      { id: "T-003", rot: "R-003", concio: "C2", zona: "scarpata", stato: "da posare" },
+      { id: "T-004", rot: "R-004", concio: "C2", zona: "sommità", stato: "da posare" },
+      { id: "T-005", rot: "R-005", concio: "C3", zona: "sommità", stato: "da posare" },
+      { id: "T-006", rot: "R-006", concio: "C3", zona: "scarpata", stato: "da posare" },
     ],
     video: [
       { id: "EV-01", t: T(12, -3), cam: "TV1", tipo: "Movimento fuori orario", descr: "Animale selvatico rilevato davanti al cancello d'ingresso.", azione: "Verifica da remoto del responsabile di cantiere: falso allarme, nessun intervento.", a: ["DL"], visti: [{ ruolo: "DL", t: T(12, 1) }], chiuso: T(12, -2) },
